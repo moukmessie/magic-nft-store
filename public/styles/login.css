@@ -1,0 +1,104 @@
+/* Variables */
+
+:root {
+  --bg-main: #fff; 
+  --bg-accent: #ffcf00;
+  --bg-info: #fff2bb;
+  --bg-error: #ffc0c3;
+  --color-main: #333;
+  --color-valid: #33881b;
+  --color-invalid: #e3000b;
+  --font-main: 'Lato';
+}
+
+
+/* Account styles */
+
+#account {
+  display: flex;
+  margin: 32px;
+}
+
+#account p {
+  
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  margin-top: 20px;
+}
+#account input{
+   
+ margin: auto;
+  
+}
+#account h2 {
+   
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+#account h3 {
+  font-size: 20px;
+  margin-bottom: 24px;
+   
+}
+
+#account p.valid {
+  color: var(--color-valid);
+}
+
+#account input.valid {
+  border-color: var(--color-valid);
+}
+
+#account p.invalid {
+  color: var(--color-invalid);
+}
+
+#account input.invalid {
+  border-color: var(--color-invalid);
+}
+
+#account input[type="submit"] {
+  margin-top: 20px;
+}
+
+#account .account-login {
+  align-self: flex-start;
+ box-shadow: -4px -3px 18px 5px rgba(0, 0, 0, 1);
+  flex: 1;
+  padding: 20px;
+}
+
+#account .account-signin {
+ 
+  align-self:flex-end;
+ box-shadow: -3px -3px 18px 25px rgba(0, 0, 0, 1);
+  flex: 2;
+  
+  padding: 10px;
+}
+
+
+
+/* Error styles */
+
+#error {
+  margin: 64px 32px;
+}
+
+#error h1 {
+  margin-bottom: 16px;
+}
+
+#error p {
+  font-size: 20px;
+  margin-bottom: 32px;
+}
+
+#error a {
+  border: 2px solid var(--color-main);
+  display: inline-block;
+  padding: 8px 12px;
+}
