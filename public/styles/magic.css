@@ -87,7 +87,16 @@ body{
     align-items: flex-start;
     flex-wrap: wrap;
 }
+.delete{
+    margin-left: 2px;
+    opacity: 50%;
+    background: #e3000b;
+    border-color: #e3000b;
 
+}
+.delete:hover{
+    opacity: 100%;
+}
 .browser-content, .browser header{
     width: 90%;
 }

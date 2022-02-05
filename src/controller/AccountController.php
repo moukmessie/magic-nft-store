@@ -59,7 +59,7 @@ class AccountController
         $pass= password_hash($password,PASSWORD_DEFAULT);
         //
 //var_dump($pass);
-        $signin = \model\AccountModel::signin($firstsname, $lastsname , $mail, $pass);
+        $signin = \model\AccountModel::signing($firstsname, $lastsname , $mail, $pass);
 
         if ($signin) {
             header("Location: /account?status=signin_success");

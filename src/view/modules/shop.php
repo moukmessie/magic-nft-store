@@ -1,5 +1,5 @@
 <?php if(!empty($params["cards"])) :?>
-<form class="browser" method="post" action="<?php echo DOCUMENT_DIR ?>pages/add_to_cart.php">
+<form class="browser" method="post" action="/cart/add">
     <header style="font-size: 1.5em; padding: 5px; display: flex; justify-content: space-between; align-items: center ">
         <div  >SELECTION : <span id="num-cards"></span>  </div>
 

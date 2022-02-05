@@ -28,6 +28,9 @@ $router->post('/account/signin','controller\AccountController@signin');
 /** Shop Router**/
 $router->get('/shop','controller\ShopController@shop');
 $router->get('/cart','controller\ShopController@cart');
+$router->post('/cart/add','controller\ShopController@add');
+$router->post('/cart/update','controller\ShopController@update');
+$router->post('/cart/delete','controller\ShopController@delete');
 
 
 

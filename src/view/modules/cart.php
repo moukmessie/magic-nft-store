@@ -1,71 +1,53 @@
- <form class="browser" method="post" action="<?php echo DOCUMENT_DIR ?>pages/update_cart.php"  >
-            <header style="flex-direction: column; justify-content: center ">
-                <h1 style="padding: 5px">CART: <span id="num-cards">0</span>$ </h1>
-                <button class="btn btn-danger" type="submit" style="width: 100%;margin: 0px;visibility:hidden" id="update-cart"  >UPDATE CART</button>
-            </header>
-            <div class="browser-content-wrapper">
-                <div class="browser-content">
+ <div class="browser" >
 
-                              <div class="magic-card selected">
-                            <img src="<?php echo $iValue->image_uris->normal ?>" alt="card">
-
-                            <legend style="justify-content: center">
-                                <label for="<?php echo $key ?>"><?php echo $iValue->name  ?></label>
-
-                                <input  type="number"   value="<?php echo $value ?>" name="upd[<?php echo $key ?>]" id="<?php echo $key ?> " >
-
-                            </legend>
-                        </div>
-
-
+     <header style="flex-direction: column; justify-content: center ">
+         <h1 style="padding: 5px">CART: <span id="num_cards"><?= $_SESSION['cart']['quantity']*25/100?></span>$ </h1>
+     </header>
+     <div class="browser-content-wrapper">
+         <div class="browser-content">
+             <?php for ($iValue=0; $iValue<count($params['cards']); $iValue++) {?>
+                 <div class="magic-card selected">
+                     <img src="<?= $params['cards'][$iValue]->image_uris->normal ?>" alt="card">
+                     <legend style="justify-content: center ">
+                         <label for=""><?= $params['cards'][$iValue]->name  ?></label>
+                         <form method="post" action="/cart/update" style="display: flex">
+                             <input type="text" name="id_product" style="position: absolute;visibility: hidden"  value="<?= $params['cards'][$iValue]->id ?>">
+                             <input id="btn_less" type="submit" style="margin: 0 2px" value="-"   >
+                             <input  id="btn_value" type="button" style="background: white" disabled value="<?=  $params['quantity'][$iValue]?>" name="quantity"  >
+                             <input id="btn_more" type="submit" style="margin: 0 2px"  value="+"   >
+                         </form>
+                         <form action="/cart/delete" method="post">
+                             <button type="submit" class="delete">
+                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                                     <path fill-rule="evenodd" d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z"/>
+                                     <path fill-rule="evenodd" d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z"/>
+                                 </svg>
+                             </button>
+                             <label>
+                                 <input type="text" name="delete" style="position: absolute;visibility: hidden"  value="<?= $params['cards'][$iValue]->id ?>">
+                             </label>
+                         </form>
+                     </legend>
                  </div>
-
-            </div>
-        </form>
-    <script>
-
-
-        let inputs = undefined
-        let numCards = undefined
-        let updateButton = undefined
+             <?php }  ?>
+         </div>
+     </div>
+ </div>
+<script>
+    
         document.addEventListener('DOMContentLoaded', function (){
-            numCards = document.getElementById('num-cards')
-            updateButton = document.getElementById('update-cart')
-            inputs = document.getElementsByTagName('input')
-            for (input of inputs){
-                input.addEventListener('change', function (){
-                    if(this.value !== this.defaultValue){
-                        this.parentElement.parentElement.classList.remove('selected')
-                        this.parentElement.parentElement.classList.add('edited')
-                    }else{
-                        this.parentElement.parentElement.classList.remove('edited')
-                        this.parentElement.parentElement.classList.add('selected')
-                    }
-                    countItems()
-                    styleButton()
-                })
-            }
-            countItems()
-            styleButton()
+            let btn_less = document.getElementById('btn_less');
+            let btn_more= document.getElementById('btn_more');
+            let btn_value = document.getElementById('btn_value');
+
+            btn_less.addEventListener('click',()=>{
+                btn_value.value = parseInt(btn_value.value) - 1;
+
+            })
+            btn_more.addEventListener('click',()=>{
+                btn_value.value =parseInt(btn_value.value) + 1;
+            })
         })
 
-        function countItems(){
-            const price = 25
-            let count = 0
-            for(input of inputs){
-                let val = parseInt(input.value)
-                val = val >= 0 ? val : 0
-                count += val
-            }
-            numCards.innerHTML = count*price/100
-        }
-
-        function styleButton(){
-            let edited = document.getElementsByClassName('edited')
-            updateButton.style.visibility = (edited.length != 0) ? 'visible' : 'hidden'
-        }
-
-
-
-    </script>
+</script>
 
