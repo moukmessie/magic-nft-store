@@ -43,7 +43,7 @@ class ShopController
             $cards = Cards::cart($id_tab);
 
             //var_dump($quantity[0]);
-            if ($cards) {
+
                 $params=[
                     "title"=>"cart",
                     "module"=>"cart.php",
@@ -53,9 +53,7 @@ class ShopController
                 $_SESSION['cart']['quantity']=array_sum($quantity);
                 $_SESSION['cart']['product_number']=count($quantity);
                 Template::render($params);
-            }else {
-                header("Location: /shop?status=failed_to_check_cart");
-            }
+
         }
     }
 
@@ -88,21 +86,16 @@ class ShopController
 
     public function update():void
     {
-        if(isset($_SESSION['login']['id'], $_POST['update'])){
+        if(isset($_SESSION['login']['id'], $_POST['id_product'])){
             $quantity = $_POST['quantity'];
             $id_account = $_SESSION['login']['id'];
             $id_product = $_POST['id_product'];
-
-//            if (count($id_product)<2 and  count($quantity)<2) {
-//                CartModel::updateCart($quantity,$id_account,$id_product);
-//            }
+            //var_dump("qt= ".$quantity, "user : ".$id_account, "prod : ".$id_product);
             CartModel::updateQuantity($quantity,$id_account,$id_product);
-            //for($iValue=0;$iValue<count($id_product); $iValue++){
-//                    CartModel::updateQuantity($quantity[$iValue],$id_account,$id_product[$iValue]);
-//            }
             header("Location: /cart?status=quantity_updating");
 
-
+        }else {
+            header("Location: /cart?status=error_updating");
         }
 
     }
