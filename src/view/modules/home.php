@@ -7,5 +7,5 @@ $logged = isset($_SESSION['login']) ;
 <?php endif; ?>
 
 <div class="title">WELCOME TO THE MAGIC STORE</div>
-<img src="public/images/MagicLogo4.png" alt="Magic logo">
+<img src="/public/images/MagicLogo4.png" alt="Magic logo">
 

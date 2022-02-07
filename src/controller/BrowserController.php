@@ -27,6 +27,7 @@ class BrowserController
         }else{
 
             header("Location: /shop");
+            exit();
         }
     }
 
@@ -48,6 +49,7 @@ class BrowserController
         }else{
 
             header("Location: /browser");
+            exit();
         }
 
 

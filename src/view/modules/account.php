@@ -2,13 +2,13 @@
     if (!empty($_GET['status'])){
         $status =$_GET['status'];
       if ($status == "login_fail") :?>
-         <div class="box error" style="margin-left: 30px"> La connexion a échoué. Vérifiez vos identifiants et réessayez.</div>
+          <div id="alert" class="alert alert-danger error" style="margin: 5px 30px 30px; text-align: center">La connexion a échoué. Vérifiez vos identifiants et réessayez.</div>
 <?php elseif ($status == "signin_fail") :?>
-            <div class="box error" style="margin-left: 30px">Inscription échoué, l'adresse e-mail est déjà utilisée.</div>
+          <div id="alert" class="alert alert-danger error" style="margin: 5px 30px 30px; text-align: center">Inscription échoué, l'adresse e-mail est déjà utilisée.</div>
       <?php elseif ($status == "logout_success") :?>
-            <div class="box info" style="margin-left: 30px">Vous êtes déconnecté. À bientôt !</div>
+            <div class="alert alert-success " style="margin: 5px 30px 30px; text-align: center">Vous êtes déconnecté. À bientôt !</div>
      <?php elseif ($status == "signin_success") :?>
-        <div class="box info" style="margin-left: 30px">Inscription réussie! Vous pouvez dès à présent vous connecter.</div>
+        <div class="alert alert-success box info" style="margin: 5px 30px 30px; text-align: center">Inscription réussie! Vous pouvez dès à présent vous connecter.</div>
      <?php endif;
     }
 

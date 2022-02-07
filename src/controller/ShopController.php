@@ -14,13 +14,20 @@ class ShopController
      */
     public function shop(): void
     {
-        $cards=Cards::data();
-        $params=[
-            "title"=>"Shop",
-            "module"=>"shop.php",
-            "cards"=>$cards
-        ];
-        Template::render($params);
+        if (isset($_SESSION['login']['id'])){
+            $cards=Cards::data();
+            $params=[
+                "title"=>"Shop",
+                "module"=>"shop.php",
+                "cards"=>$cards
+            ];
+            Template::render($params);
+        }else {
+            header("Location: /browser");
+            exit();
+        }
+
+
     }
 
     /**
@@ -54,6 +61,9 @@ class ShopController
                 $_SESSION['cart']['product_number']=count($quantity);
                 Template::render($params);
 
+        }else{
+            header("Location: /browser");
+            exit();
         }
     }
 

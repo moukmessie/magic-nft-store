@@ -16,7 +16,7 @@ class AccountController
             ];
             Template::render($params);
         }else{
-            header("Location: /account/profil");
+            header("Location: /");
         }
 
     }
@@ -39,7 +39,7 @@ class AccountController
                 'mail'=>$login['mail'],
             );
             $_SESSION['login']=$user;
-            header("Location: /shop");
+            header("Location: /");
             exit();
         }else{
 
